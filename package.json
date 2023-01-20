@@ -11,6 +11,9 @@
   "dependencies": {
     "axios": "^1.2.3",
     "core-js": "^3.8.3",
+    "github-markdown-css": "^5.1.0",
+    "highlight.js": "^11.7.0",
+    "katex": "^0.16.4",
     "pinia": "^2.0.29",
     "pinia-plugin-persist": "^1.0.0",
     "ua-parser-js": "^1.0.32",
