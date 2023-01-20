@@ -1,4 +1,4 @@
 <template>
-  <div>{{ $route.meta.title }}</div>
+  <div>Menu</div>
   <router-view />
 </template>
