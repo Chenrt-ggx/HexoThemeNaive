@@ -1,24 +1,31 @@
-# hexo-theme-naive
+# HexoThemeNaive
 
 ## Project setup
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compiles and minifies for local production
+
 ```
-npm run build
+npm run build-local
+```
+
+### Compiles and minifies for remote production
+
+```
+npm run build-action
 ```
 
 ### Lints and fixes files
+
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
