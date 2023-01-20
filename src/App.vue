@@ -1,31 +1,28 @@
 <template>
-  <n-config-provider :theme="config.dark ? darkTheme : lightTheme" :locale="zhCN">
+  <n-config-provider :theme="mode.dark ? darkTheme : lightTheme" :locale="zhCN">
     <n-message-provider>
-      <n-layout style="height: 100vh">
-        <router-view />
-      </n-layout>
+      <wrapper />
     </n-message-provider>
   </n-config-provider>
 </template>
 
 <script setup>
-import flagStore from '@/stores/flag';
+import { onMounted } from 'vue';
+import { getConfig } from '@/api/common';
+import { darkTheme, lightTheme, zhCN, NConfigProvider, NMessageProvider } from 'naive-ui';
+import modeStore from '@/stores/mode';
 import configStore from '@/stores/config';
-import { darkTheme, lightTheme, zhCN, NConfigProvider, NMessageProvider, NLayout } from 'naive-ui';
+import Wrapper from '@/views/Wrapper';
 
+const mode = modeStore();
 const config = configStore();
-const flag = flagStore();
 
-let onResizing = -1;
-window.onresize = () => {
-  if (onResizing === -1) {
-    onResizing = setTimeout(() => {
-      flag.wide = document.body.clientWidth >= 1080;
-      flag.mobile = document.body.clientWidth <= 800;
-      onResizing = -1;
-    }, 200);
+onMounted(async () => {
+  const initConfig = await getConfig();
+  if (initConfig && initConfig.data && initConfig.data.avatar) {
+    config.avatar = initConfig.data.avatar;
   }
-};
+});
 </script>
 
 <style lang="scss">

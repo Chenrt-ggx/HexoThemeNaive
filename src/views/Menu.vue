@@ -20,7 +20,7 @@
           <n-icon :component="Music" />
         </template>
       </n-switch>
-      <n-switch v-model:value="config.dark" :round="false" :rail-style="railStyle">
+      <n-switch v-model:value="mode.dark" :round="false" :rail-style="railStyle">
         <template #checked-icon>
           <n-icon :component="Moon" />
         </template>
@@ -29,7 +29,7 @@
         </template>
       </n-switch>
       <n-divider vertical />
-      <n-avatar circle style="margin: 6px 20px 6px 0; float: left" />
+      <n-avatar circle style="margin: 6px 20px 6px 0; float: left; background-color: #00000000" :src="config.avatar" />
     </n-space>
   </n-space>
   <n-divider style="margin: 0" />
@@ -37,15 +37,17 @@
 </template>
 
 <script setup>
-import flagStore from '@/stores/flag';
-import configStore from '@/stores/config';
 import { getNIcon, getNamedRoute } from '@/libs/menu';
 import { NMenu, NDivider, NAvatar, NSwitch, NSpace, NIcon, NPopover, NButton } from 'naive-ui';
 import { Sun, Moon, Music, Stop, Menu as VerticalMenu } from '@vicons/carbon';
 import { Home, CollapseCategories, TagGroup, Archive, InformationSquare } from '@vicons/carbon';
+import flagStore from '@/stores/flag';
+import modeStore from '@/stores/mode';
+import configStore from '@/stores/config';
 
-const config = configStore();
 const flag = flagStore();
+const mode = modeStore();
+const config = configStore();
 
 const menuOptions = [
   {
@@ -78,9 +80,9 @@ const menuOptions = [
 const railStyle = ({ focused, checked }) => {
   const style = {};
   if (checked) {
-    style.background = '#030852';
+    style.background = '#061178';
     if (focused) {
-      style.boxShadow = '0 0 0 2px #03085240';
+      style.boxShadow = '0 0 0 2px #06117840';
     }
   } else {
     style.background = '#fffb8f';
