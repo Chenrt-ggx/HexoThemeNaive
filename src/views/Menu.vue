@@ -1,6 +1,16 @@
 <template>
   <n-space align="center" justify="space-around" style="padding: 3px 0 3px">
-    <n-menu :options="menuOptions" :value="$route.path" mode="horizontal" style="margin-top: 3px" />
+    <n-popover trigger="click" v-if="flag.mobile">
+      <template #trigger>
+        <n-button style="font-size: 24px">
+          <n-icon>
+            <vertical-menu />
+          </n-icon>
+        </n-button>
+      </template>
+      <n-menu :options="menuOptions" :value="$route.path" style="width: 60vw" />
+    </n-popover>
+    <n-menu v-else :options="menuOptions" :value="$route.path" mode="horizontal" style="margin-top: 3px" />
     <n-space align="center">
       <n-switch :round="false" style="margin-right: 7px">
         <template #checked-icon>
@@ -10,7 +20,7 @@
           <n-icon :component="Music" />
         </template>
       </n-switch>
-      <n-switch :round="false" :rail-style="railStyle">
+      <n-switch v-model:value="config.dark" :round="false" :rail-style="railStyle">
         <template #checked-icon>
           <n-icon :component="Moon" />
         </template>
@@ -27,10 +37,15 @@
 </template>
 
 <script setup>
-import { NMenu, NDivider, NAvatar, NSwitch, NSpace, NIcon } from 'naive-ui';
+import flagStore from '@/stores/flag';
+import configStore from '@/stores/config';
 import { getNIcon, getNamedRoute } from '@/libs/menu';
+import { NMenu, NDivider, NAvatar, NSwitch, NSpace, NIcon, NPopover, NButton } from 'naive-ui';
+import { Sun, Moon, Music, Stop, Menu as VerticalMenu } from '@vicons/carbon';
 import { Home, CollapseCategories, TagGroup, Archive, InformationSquare } from '@vicons/carbon';
-import { Sun, Moon, Music, Stop } from '@vicons/carbon';
+
+const config = configStore();
+const flag = flagStore();
 
 const menuOptions = [
   {
