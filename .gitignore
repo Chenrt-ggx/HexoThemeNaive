@@ -1,6 +1,10 @@
+/dist
 .DS_Store
 node_modules
-/dist
+
+# api
+public/api
+public/assets
 
 # local env files
 .env.local
