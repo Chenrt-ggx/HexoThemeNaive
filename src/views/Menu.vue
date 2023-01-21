@@ -12,21 +12,15 @@
     </n-popover>
     <n-menu v-else :options="menuOptions" :value="$route.path" mode="horizontal" style="margin-top: 3px" />
     <n-space align="center">
-      <n-switch
-        :round="false"
-        :value="switchMode"
-        @update:value="handleSwitch"
-        style="margin-right: 7px"
-        v-if="config.bgm"
-      >
+      <n-switch :value="switchMode" @update:value="handleSwitch" style="margin-right: 7px" v-if="config.bgm">
         <template #checked-icon>
-          <n-icon :component="Stop" />
+          <play-spin />
         </template>
         <template #unchecked-icon>
           <n-icon :component="Music" />
         </template>
       </n-switch>
-      <n-switch v-model:value="mode.dark" :round="false" :rail-style="railStyle">
+      <n-switch v-model:value="mode.dark" :rail-style="railStyle">
         <template #checked-icon>
           <n-icon :component="Moon" />
         </template>
@@ -47,11 +41,12 @@
 import { ref } from 'vue';
 import { getNIcon, getNamedRoute } from '@/libs/menu';
 import { NMenu, NDivider, NAvatar, NSwitch, NSpace, NIcon, NPopover, NButton } from 'naive-ui';
-import { Sun, Moon, Music, Stop, Menu as VerticalMenu } from '@vicons/carbon';
+import { Sun, Moon, Music, Menu as VerticalMenu } from '@vicons/carbon';
 import { Home, CollapseCategories, TagGroup, Archive, InformationSquare } from '@vicons/carbon';
 import flagStore from '@/stores/flag';
 import modeStore from '@/stores/mode';
 import configStore from '@/stores/config';
+import PlaySpin from '@/components/PlaySpin';
 
 const flag = flagStore();
 const mode = modeStore();
