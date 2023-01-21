@@ -12,7 +12,13 @@
     </n-popover>
     <n-menu v-else :options="menuOptions" :value="$route.path" mode="horizontal" style="margin-top: 3px" />
     <n-space align="center">
-      <n-switch :round="false" style="margin-right: 7px">
+      <n-switch
+        :round="false"
+        :value="switchMode"
+        @update:value="handleSwitch"
+        style="margin-right: 7px"
+        v-if="config.bgm"
+      >
         <template #checked-icon>
           <n-icon :component="Stop" />
         </template>
@@ -32,11 +38,13 @@
       <n-avatar circle style="margin: 6px 20px 6px 0; float: left; background-color: #00000000" :src="config.avatar" />
     </n-space>
   </n-space>
+  <audio :src="config.bgm" ref="player" loop v-if="config.bgm" />
   <n-divider style="margin: 0" />
   <router-view />
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { getNIcon, getNamedRoute } from '@/libs/menu';
 import { NMenu, NDivider, NAvatar, NSwitch, NSpace, NIcon, NPopover, NButton } from 'naive-ui';
 import { Sun, Moon, Music, Stop, Menu as VerticalMenu } from '@vicons/carbon';
@@ -76,6 +84,13 @@ const menuOptions = [
     icon: getNIcon(InformationSquare)
   }
 ];
+
+const player = ref(null);
+const switchMode = ref(false);
+const handleSwitch = (value) => {
+  player.value[value ? 'play' : 'pause']();
+  switchMode.value = value;
+};
 
 const railStyle = ({ focused, checked }) => {
   const style = {};

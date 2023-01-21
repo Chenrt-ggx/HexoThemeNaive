@@ -1,5 +1,5 @@
 <template>
-  <n-layout style="height: 100vh">
+  <n-layout style="height: 100vh" :native-scrollbar="false">
     <router-view />
   </n-layout>
 </template>
