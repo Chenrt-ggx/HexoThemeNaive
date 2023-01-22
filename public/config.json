@@ -1,5 +1,7 @@
 {
   "avatar": "/assets/avatar.jpg",
   "bgm": "/assets/bgm.mp3",
-  "egg": "/assets/egg.png"
+  "egg": "/assets/egg.png",
+  "created": "2019-07-25 16:01:03",
+  "author": "Chenrt"
 }

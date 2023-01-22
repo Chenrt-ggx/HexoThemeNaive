@@ -19,9 +19,9 @@ const config = configStore();
 
 onMounted(async () => {
   const initConfig = await getConfig();
-  initConfig.avatar && (config.avatar = initConfig.avatar);
-  initConfig.bgm && (config.bgm = initConfig.bgm);
-  initConfig.egg && (config.egg = initConfig.egg);
+  Object.keys(initConfig).forEach((i) => {
+    config[i] = initConfig[i];
+  });
 });
 </script>
 
