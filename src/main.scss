@@ -1,0 +1,19 @@
+@import 'katex/dist/katex.min.css';
+
+.hljs-blob-num::before {
+  content: attr(data-line-number);
+}
+
+*::-webkit-scrollbar {
+  width: var(--n-scrollbar-width);
+  height: var(--n-scrollbar-height);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #00000000;
+  border-radius: var(--n-scrollbar-border-radius);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--n-scrollbar-color);
+}

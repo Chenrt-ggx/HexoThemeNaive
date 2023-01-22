@@ -1,5 +1,0 @@
-@import 'katex/dist/katex.min.css';
-
-.hljs-blob-num::before {
-    content: attr(data-line-number);
-}

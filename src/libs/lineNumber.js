@@ -29,7 +29,7 @@ const duplicateMultilineNodes = (element) => {
 const duplicateMultilineNode = (element) => {
   if (/hljs-/.test(element.className)) {
     const result = getLines(element.innerHTML).map((i) => {
-      const lineText = i.length > 0 ? i : ' ';
+      const lineText = i.length > 0 ? i : '\n';
       return `<span class="${element.className}">${lineText}</span>`;
     });
     element.innerHTML = result.join('\n').trim();
@@ -41,7 +41,7 @@ const addLineNumbersBlockFor = (inputHtml, options = {}) => {
   const html = getLines(inputHtml, true).map((i) => {
     const number = `<span style="${numberStyle}" class="hljs-blob-num" data-line-number="${index++}">`;
     const left = `<td style="${basicStyle}">${number}</td>`;
-    const right = `<td style="${basicStyle}">${i.length > 0 ? i : ' '}</td>`;
+    const right = `<td style="${basicStyle}">${i.length > 0 ? i : '\n'}</td>`;
     return `<tr style="${basicStyle}">${left + right}</tr>`;
   });
   return `<table style="${basicStyle}"><tbody>${html.join('\n').trim()}</tbody></table>`;
