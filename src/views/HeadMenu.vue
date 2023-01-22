@@ -34,12 +34,11 @@
   </n-space>
   <audio :src="config.bgm" ref="player" loop v-if="config.bgm" />
   <n-divider style="margin: 0" />
-  <router-view />
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import { getNIcon, getNamedRoute } from '@/libs/menu';
+import { getNIcon, getNamedRoute } from '@/libs/render';
 import { NMenu, NDivider, NAvatar, NSwitch, NSpace, NIcon, NPopover, NButton } from 'naive-ui';
 import { Sun, Moon, Music, Menu as VerticalMenu } from '@vicons/carbon';
 import { Home, CollapseCategories, TagGroup, Archive, InformationSquare } from '@vicons/carbon';

@@ -1,13 +1,15 @@
 <template>
   <n-layout style="height: 100vh" :native-scrollbar="false">
+    <head-menu />
     <router-view />
     <n-back-top :right="50" />
   </n-layout>
 </template>
 
 <script setup>
-import flagStore from '@/stores/flag';
 import { useMessage, NBackTop, NLayout } from 'naive-ui';
+import HeadMenu from '@/views/HeadMenu';
+import flagStore from '@/stores/flag';
 
 const flag = flagStore();
 window.$message = useMessage();
