@@ -21,6 +21,7 @@ onMounted(async () => {
   const initConfig = await getConfig();
   initConfig.avatar && (config.avatar = initConfig.avatar);
   initConfig.bgm && (config.bgm = initConfig.bgm);
+  initConfig.egg && (config.egg = initConfig.egg);
 });
 </script>
 
