@@ -4,11 +4,11 @@
       <n-card>
         <template v-if="props.blog">
           <div
-            v-html="props.blog.raw"
-            v-highlight
-            v-category="setCategory"
             class="markdown-body"
             style="background-color: #00000000"
+            v-html="props.blog.raw"
+            v-category="setCategory"
+            v-highlight
           />
         </template>
         <div v-else>

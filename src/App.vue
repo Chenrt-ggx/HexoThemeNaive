@@ -25,6 +25,8 @@ onMounted(async () => {
 </script>
 
 <style lang="scss">
+@import '@/main.css';
+
 body {
   margin: 0;
   padding: 0;
