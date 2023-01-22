@@ -12,7 +12,7 @@
     </n-popover>
     <n-menu v-else :options="menuOptions" :value="$route.path" mode="horizontal" style="margin-top: 3px" />
     <n-space align="center">
-      <n-switch :value="switchMode" @update:value="handleSwitch" style="margin-right: 7px" v-if="config.bgm">
+      <n-switch :value="playerMode" @update:value="handlePlayer" style="margin-right: 7px" v-if="config.bgm">
         <template #checked-icon>
           <play-spin />
         </template>
@@ -20,7 +20,7 @@
           <n-icon :component="Music" />
         </template>
       </n-switch>
-      <n-switch v-model:value="mode.dark" :rail-style="railStyle">
+      <n-switch :value="mode.dark" @update:value="handleMode" :rail-style="railStyle">
         <template #checked-icon>
           <n-icon :component="Moon" />
         </template>
@@ -80,10 +80,15 @@ const menuOptions = [
 ];
 
 const player = ref(null);
-const switchMode = ref(false);
-const handleSwitch = (value) => {
+const playerMode = ref(false);
+const handlePlayer = (value) => {
   player.value[value ? 'play' : 'pause']();
-  switchMode.value = value;
+  playerMode.value = value;
+};
+
+const handleMode = (value) => {
+  mode.dark = value;
+  location.reload();
 };
 
 const railStyle = ({ focused, checked }) => {

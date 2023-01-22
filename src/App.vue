@@ -10,9 +10,9 @@
 import { onMounted } from 'vue';
 import { getConfig } from '@/api/common';
 import { darkTheme, lightTheme, zhCN, NConfigProvider, NMessageProvider } from 'naive-ui';
+import Wrapper from '@/views/Wrapper';
 import modeStore from '@/stores/mode';
 import configStore from '@/stores/config';
-import Wrapper from '@/views/Wrapper';
 
 const mode = modeStore();
 const config = configStore();

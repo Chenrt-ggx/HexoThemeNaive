@@ -1,5 +1,5 @@
+const numberStyle = ['margin: 0 20px 0 10px', 'float: right', 'color: #7f7f7f'].join(';');
 const basicStyle = ['border: none', 'margin: 0', 'padding: 0', 'background-color: #00000000'].join(';');
-const numberStyle = ['margin-right: 1.5em', 'float: right', 'color: #7f7f7f'].join(';');
 
 const getLinesCount = (text) => (text.trim().match(/\r\n|\r|\n/g) || []).length;
 
