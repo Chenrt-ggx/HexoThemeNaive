@@ -1,9 +1,7 @@
 <template>
   <n-spin :size="14">
     <template #icon>
-      <n-icon>
-        <music />
-      </n-icon>
+      <n-icon :component="Music" />
     </template>
   </n-spin>
 </template>

@@ -2,9 +2,7 @@
   <n-popover trigger="click" v-if="flag.mobile">
     <template #trigger>
       <n-button style="font-size: 24px">
-        <n-icon>
-          <vertical-menu />
-        </n-icon>
+        <n-icon :component="VerticalMenu" />
       </n-button>
     </template>
     <n-menu :options="menuOptions" :value="$route.path" style="width: 60vw" />

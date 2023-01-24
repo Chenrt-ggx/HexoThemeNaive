@@ -2,7 +2,13 @@
   <n-grid cols="64" item-responsive style="margin-top: 30px; text-align: left">
     <n-grid-item span="58 800:48 1080:38" offset="3 800:8 1080:6">
       <n-card>
-        <template v-if="props.blog">
+        <template #header>
+          <card-header v-if="props.blog" :blog="props.blog" :link="link" />
+          <n-skeleton v-else text style="width: 50%; float: left" />
+        </template>
+        <n-space vertical size="large" v-if="props.blog">
+          <tags :tags="props.blog.tags" />
+          <categories :categories="props.blog.categories" />
           <div
             class="markdown-body"
             style="background-color: #00000000"
@@ -10,10 +16,13 @@
             v-category="setCategory"
             v-highlight
           />
-        </template>
+        </n-space>
         <div v-else>
           <n-skeleton v-for="i in 100" :key="i" text :style="{ width: Math.random() * 70 + 30 + '%' }" />
         </div>
+        <template #footer>
+          <card-footer v-if="props.blog" :blog="props.blog" :link="link" />
+        </template>
       </n-card>
     </n-grid-item>
     <n-grid-item span="0 800:0 1080:12" offset="0 800:0 1080:2">
@@ -25,10 +34,14 @@
 </template>
 
 <script setup>
-import { ref, defineProps } from 'vue';
-import { NSkeleton, NAnchor, NCard, NGrid, NGridItem } from 'naive-ui';
+import { computed, ref, defineProps } from 'vue';
+import { NSkeleton, NSpace, NAnchor, NCard, NGrid, NGridItem } from 'naive-ui';
 import modeStore from '@/stores/mode';
+import Tags from '@/components/Blog/Tags';
+import Categories from '@/components/Blog/Categories';
 import AnchorLink from '@/components/Blog/AnchorLink';
+import CardFooter from '@/components/Blog/CardFooter';
+import CardHeader from '@/components/Blog/CardHeader';
 
 const props = defineProps({
   blog: {
@@ -60,4 +73,6 @@ const setCategory = (titles) => {
   const min = Math.min(...titles.map((i) => i.level));
   menuItem.value = titles.filter((i) => i.level === min);
 };
+
+const link = computed(() => ({ name: 'blog', params: { id: props.blog.id } }));
 </script>

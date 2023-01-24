@@ -5,7 +5,7 @@
       <span v-for="(i, index) in duration" :key="index">{{ i }}</span>
     </n-space>
     <n-space :size="5">
-      <n-icon style="margin-top: 3px"><chart-cluster-bar /></n-icon>
+      <n-icon style="margin-top: 3px" :component="ChartClusterBar" />
       <span v-for="(i, index) in 'Total words:'.split(' ')" :key="index">{{ i }}</span>
       <span>{{ config.words }}</span>
     </n-space>
