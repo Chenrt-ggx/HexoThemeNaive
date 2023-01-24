@@ -1,3 +1,8 @@
 <template>
-  <div>{{ $route.params.id }}</div>
+  <select-list :api="selectCategory" route="category-select" />
 </template>
+
+<script setup>
+import { selectCategory } from '@/api/select';
+import SelectList from '@/components/SelectList';
+</script>
