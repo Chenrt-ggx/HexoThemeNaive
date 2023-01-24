@@ -1,7 +1,7 @@
 <template>
   <n-divider style="margin-top: 0" />
   <n-space justify="space-between" align="center" :style="flag.mobile ? { marginTop: '-6px' } : {}">
-    <n-button ghost v-if="button && !flag.mobile" @click="router.go(link)">
+    <n-button ghost v-if="button && !flag.mobile" @click="$router.push(link)">
       <n-icon :component="View" />
       <router-link :to="link" class="link-fix" style="margin-left: 10px">阅读全文</router-link>
     </n-button>
@@ -33,7 +33,6 @@
 
 <script setup>
 import { View } from '@vicons/carbon';
-import { useRouter } from 'vue-router';
 import { computed, defineProps } from 'vue';
 import { NIcon, NSpace, NDivider, NButton } from 'naive-ui';
 import moment from 'moment/moment';
@@ -53,8 +52,6 @@ const props = defineProps({
     default: false
   }
 });
-
-const router = useRouter();
 
 const flag = flagStore();
 const length = computed(() => 'Word count: ' + props.blog.length);

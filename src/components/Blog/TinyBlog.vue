@@ -1,12 +1,11 @@
 <template>
-  <n-card size="small" hoverable :bordered="false" @click="router.go(link)">
+  <n-card size="small" hoverable @click="$router.push(link)">
     <card-header v-if="props.blog" :blog="props.blog" :link="link" />
     <n-skeleton v-else text style="width: 50%; float: left" />
   </n-card>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
 import { computed, defineProps } from 'vue';
 import { NCard, NSkeleton } from 'naive-ui';
 import CardHeader from '@/components/Blog/CardHeader';
@@ -17,7 +16,6 @@ const props = defineProps({
   }
 });
 
-const router = useRouter();
 const link = computed(() => ({ name: 'blog', params: { id: props.blog.id } }));
 </script>
 
