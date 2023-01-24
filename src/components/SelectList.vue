@@ -11,7 +11,7 @@
           </n-breadcrumb-item>
         </n-breadcrumb>
         <simple-blog v-for="(i, index) in selected.content" :key="index" :blog="i" />
-        <n-space justify="center">
+        <n-space justify="center" :style="flag.mobile ? {} : { marginTop: '20px' }">
           <n-pagination
             :page="selected.page.current"
             :page-count="selected.page.total"
@@ -26,8 +26,8 @@
 </template>
 
 <script setup>
-import { useRoute, useRouter } from 'vue-router';
 import { ref, computed, onMounted, defineProps } from 'vue';
+import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router';
 import { NSpace, NGrid, NGridItem, NPagination, NBreadcrumb, NBreadcrumbItem } from 'naive-ui';
 import flagStore from '@/stores/flag';
 import SimpleBlog from '@/components/Blog/SimpleBlog';
@@ -47,11 +47,9 @@ const props = defineProps({
   }
 });
 
-const route = useRoute();
-const router = useRouter();
-
-const refreshItemList = async () => {
-  const result = await props.api(route.params.id);
+const selected = ref();
+const refreshItemList = async (to, from) => {
+  const result = await props.api(from || to ? to.params.id : route.params.id);
   if (Object.keys(result).length === 0) {
     await router.push('/error');
   } else {
@@ -59,14 +57,15 @@ const refreshItemList = async () => {
   }
 };
 
-const selected = ref();
+const route = useRoute();
+const router = useRouter();
 onMounted(refreshItemList);
+onBeforeRouteUpdate(refreshItemList);
 const handleUpdate = async (value) => {
   const id = route.params.id;
   const dest = [...id.slice(0, id.length - 1), value];
-  await router.push({ name: props.route, params: { id: dest } });
-  await refreshItemList();
   window.$scrollTo({ top: 0, behavior: 'smooth' });
+  await router.push({ name: props.route, params: { id: dest } });
 };
 
 const flag = flagStore();

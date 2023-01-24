@@ -1,5 +1,5 @@
 <template>
-  <n-grid cols="64" item-responsive style="margin-top: 30px; text-align: left">
+  <n-grid cols="64" item-responsive style="margin-top: 50px; text-align: left">
     <n-grid-item span="58 800:48 1080:38" offset="3 800:8 1080:6">
       <n-card>
         <template #header>
@@ -9,6 +9,7 @@
         <n-space vertical size="large" v-if="props.blog">
           <tags :tags="props.blog.tags" />
           <categories :categories="props.blog.categories" />
+          <span />
           <div
             class="markdown-body"
             style="background-color: #00000000"
@@ -26,7 +27,7 @@
       </n-card>
     </n-grid-item>
     <n-grid-item span="0 800:0 1080:12" offset="0 800:0 1080:2">
-      <n-anchor ignore-gap style="position: sticky; top: 40px; max-height: 80vh">
+      <n-anchor ignore-gap style="position: sticky; top: 50px; max-height: 80vh">
         <anchor-link :items="menuItem" />
       </n-anchor>
     </n-grid-item>
