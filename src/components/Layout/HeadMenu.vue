@@ -1,5 +1,5 @@
 <template>
-  <n-space align="center" justify="space-around" style="padding: 3px 0 3px">
+  <n-space align="center" justify="space-around" style="height: 56px">
     <left />
     <right />
   </n-space>

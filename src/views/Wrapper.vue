@@ -1,8 +1,12 @@
 <template>
   <n-layout ref="layoutRef" style="height: 100vh" :native-scrollbar="false">
     <head-menu />
-    <router-view />
-    <foot-text />
+    <div style="min-height: calc(100vh - 58px); display: flex; flex-direction: column">
+      <router-view />
+      <div style="margin-top: auto">
+        <foot-text />
+      </div>
+    </div>
     <n-back-top :right="50" />
   </n-layout>
 </template>

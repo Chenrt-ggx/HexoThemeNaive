@@ -7,11 +7,14 @@
     <n-space vertical size="large">
       <n-space v-if="props.blog && !flag.mobile" align="center" size="small">
         <tags :tags="props.blog.tags" />
-        <n-divider vertical v-if="!flag.mobile" />
+        <n-divider vertical v-if="!flag.mobile && props.blog.tags.length && props.blog.categories.length" />
         <categories :categories="props.blog.categories" />
       </n-space>
-      <tags v-if="props.blog && flag.mobile" :tags="props.blog.tags" />
-      <categories v-if="props.blog && flag.mobile" :categories="props.blog.categories" />
+      <tags v-if="props.blog && flag.mobile && props.blog.tags.length" :tags="props.blog.tags" />
+      <categories
+        v-if="props.blog && flag.mobile && props.blog.categories.length"
+        :categories="props.blog.categories"
+      />
       <div style="font-size: 16px; text-align: justify">
         <span v-if="props.blog">{{ 'Abstract: ' + props.blog.description }}</span>
         <span v-else>

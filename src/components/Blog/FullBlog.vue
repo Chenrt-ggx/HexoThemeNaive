@@ -7,8 +7,8 @@
           <n-skeleton v-else text style="width: 50%; float: left" />
         </template>
         <n-space vertical size="large" v-if="props.blog">
-          <tags :tags="props.blog.tags" />
-          <categories :categories="props.blog.categories" />
+          <tags v-if="props.blog.tags.length" :tags="props.blog.tags" />
+          <categories v-if="props.blog.categories.length" :categories="props.blog.categories" />
           <span />
           <div
             class="markdown-body"
