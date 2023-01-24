@@ -24,7 +24,7 @@
       @click="handleClick"
     />
   </n-space>
-  <n-modal v-model:show="showEgg">
+  <n-modal :show="config.egg != null && showEgg" @update:show="handleEgg">
     <div class="egg-container">
       <img :src="config.egg" alt="orz" style="width: 280px" />
       <div>这都被发现了，您！</div>
@@ -35,8 +35,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import { NDivider, NAvatar, NSwitch, NSpace, NModal, NIcon } from 'naive-ui';
 import { Sun, Moon, Music } from '@vicons/carbon';
+import { NDivider, NAvatar, NSwitch, NSpace, NModal, NIcon } from 'naive-ui';
 import modeStore from '@/stores/mode';
 import configStore from '@/stores/config';
 import PlaySpin from '@/components/PlaySpin';
@@ -72,10 +72,11 @@ const railStyle = ({ focused, checked }) => {
   return style;
 };
 
-let count = 0;
 const showEgg = ref(false);
+const handleEgg = (value) => (showEgg.value = value);
+let count = 0;
 const handleClick = () => {
-  if (config.egg && ++count === 21) {
+  if (++count === 21) {
     showEgg.value = true;
     count = 0;
   }
