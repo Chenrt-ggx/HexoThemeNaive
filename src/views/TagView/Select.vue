@@ -1,5 +1,5 @@
 <template>
-  <select-list :api="selectTag" route="tag-select" />
+  <select-list :api="selectTag" route="tag-select" name="Tag" />
 </template>
 
 <script setup>

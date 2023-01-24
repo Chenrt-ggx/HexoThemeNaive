@@ -1,5 +1,5 @@
 <template>
-  <select-list :api="selectArchive" route="archive-select" />
+  <select-list :api="selectArchive" route="archive-select" name="Archive" />
 </template>
 
 <script setup>
