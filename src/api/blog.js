@@ -7,3 +7,7 @@ export const getPost = (id) => {
 export const getPosts = (id) => {
   return getRequest('/api/getPosts/' + id);
 };
+
+export const getLatest = () => {
+  return getRequest('/api/getLatestPosts');
+};
