@@ -5,6 +5,9 @@ import App from '@/App.vue';
 import pinia from '@/stores';
 import router from '@/router';
 
+import 'vfonts/Lato.css';
+import 'vfonts/FiraCode.css';
+
 const app = createApp(App);
 
 app.use(pinia);

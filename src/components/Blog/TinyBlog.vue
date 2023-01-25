@@ -6,8 +6,8 @@
 </template>
 
 <script setup>
-import { computed, defineProps } from 'vue';
 import { NCard, NSkeleton } from 'naive-ui';
+import { computed, defineProps } from 'vue';
 import CardHeader from '@/components/Blog/CardHeader';
 
 const props = defineProps({

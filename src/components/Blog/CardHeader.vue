@@ -17,15 +17,15 @@
       style="margin-right: 2px; margin-top: 1px; display: inline-block; float: right"
     >
       <n-icon :component="View" />
-      <router-link :to="link" class="link-fix" style="margin-left: 10px">阅读全文</router-link>
+      <router-link :to="props.link" class="link-fix" style="margin-left: 10px">Read More</router-link>
     </n-button>
   </component>
 </template>
 
 <script setup>
 import { defineProps } from 'vue';
-import { NH2, NH3, NIcon, NSpace, NButton } from 'naive-ui';
 import { View, Blog as BlogIcon } from '@vicons/carbon';
+import { NH2, NH3, NIcon, NSpace, NButton } from 'naive-ui';
 import flagStore from '@/stores/flag';
 
 const props = defineProps({

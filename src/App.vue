@@ -1,5 +1,9 @@
 <template>
-  <n-config-provider :theme="mode.dark ? darkTheme : lightTheme" :locale="zhCN">
+  <n-config-provider
+    :theme="mode.dark ? darkTheme : lightTheme"
+    :theme-overrides="{ common: { fontWeightStrong: '600' } }"
+    :locale="zhCN"
+  >
     <n-message-provider>
       <wrapper />
     </n-message-provider>

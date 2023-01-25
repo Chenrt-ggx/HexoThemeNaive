@@ -6,7 +6,7 @@
     <div class="text-center">
       <h1>抱歉，你访问的页面不存在</h1>
       <router-link to="/" style="text-decoration: none">
-        <n-button type="info" @click="goHome">回到首页</n-button>
+        <n-button type="info" @click="$router.push('/')">Back To Home</n-button>
       </router-link>
     </div>
   </div>
@@ -14,10 +14,6 @@
 
 <script setup>
 import { NButton } from 'naive-ui';
-import { useRouter } from 'vue-router';
-
-const router = useRouter();
-const goHome = () => router.push('/');
 </script>
 
 <style scoped lang="scss">
