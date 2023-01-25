@@ -48,7 +48,12 @@ axios.interceptors.response.use(
 export async function getRequest(url, params = {}) {
   try {
     const response = await axios(url, { method: 'get', params: params });
-    return response.data;
+    if (response.data.error) {
+      window.$message.error(response.data.error, { duration: 5000 });
+      return {};
+    } else {
+      return response.data;
+    }
   } catch (error) {
     window.$message.error(error, { duration: 5000 });
     return {};
