@@ -1,7 +1,7 @@
 <template>
   <n-divider style="margin-top: 0" />
   <n-space justify="space-between" align="center" :style="flag.mobile ? { marginTop: '-6px' } : {}">
-    <n-button ghost v-if="button && !flag.mobile" @click="$router.push(link)">
+    <n-button ghost v-if="props.button && !flag.mobile" @click="$router.push(link)">
       <n-icon :component="View" />
       <router-link :to="link" class="link-fix" style="margin-left: 10px">阅读全文</router-link>
     </n-button>

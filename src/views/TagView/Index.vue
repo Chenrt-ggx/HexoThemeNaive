@@ -1,7 +1,7 @@
 <template>
   <n-grid cols="32" item-responsive style="margin-top: 30px; text-align: left">
     <n-grid-item span="28 800:24 1080:20" offset="2 800:4 1080:6">
-      <template v-if="content">
+      <div v-if="content" style="margin-bottom: -10px">
         <n-space size="large" style="margin: 15px 0 40px">
           <span v-for="(i, index) in content.tags" :key="index">
             <router-link :to="{ name: 'tag-select', params: { id: [i.name, 1] } }" style="text-decoration: none">
@@ -29,11 +29,14 @@
               </router-link>
             </template>
             <n-space vertical v-if="i.keys.length" size="large">
-              <tiny-blog v-for="(j, jIndex) in i.keys" :key="jIndex" :blog="content.posts[j]" />
+              <div v-for="(j, jIndex) in i.keys" :key="jIndex">
+                <n-divider v-if="jIndex > 0" style="margin-top: -8px; margin-bottom: 5px" />
+                <tiny-blog :blog="content.posts[j]" />
+              </div>
             </n-space>
           </n-timeline-item>
         </n-timeline>
-      </template>
+      </div>
       <n-space justify="center" v-else>
         <n-spin style="margin-top: 30vh">
           <template #description>

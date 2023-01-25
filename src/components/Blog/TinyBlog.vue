@@ -1,6 +1,6 @@
 <template>
-  <n-card size="small" hoverable @click="$router.push(link)">
-    <card-header v-if="props.blog" :blog="props.blog" :link="link" />
+  <n-card content-style="padding: 0 0 0 16px" :bordered="false">
+    <card-header v-if="props.blog" :blog="props.blog" :link="link" :bar="false" button />
     <n-skeleton v-else text style="width: 50%; float: left" />
   </n-card>
 </template>

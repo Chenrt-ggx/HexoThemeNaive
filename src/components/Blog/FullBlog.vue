@@ -3,7 +3,7 @@
     <n-grid-item span="58 800:48 1080:38" offset="3 800:8 1080:6">
       <n-card>
         <template #header>
-          <card-header v-if="props.blog" :blog="props.blog" :link="link" />
+          <card-header v-if="props.blog" :blog="props.blog" :link="link" :dense="false" />
           <n-skeleton v-else text style="width: 50%; float: left" />
         </template>
         <n-space vertical size="large" v-if="props.blog">
