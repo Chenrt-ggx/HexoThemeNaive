@@ -1,5 +1,5 @@
 <template>
-  <select-list :api="selectCategory" route="category-select" name="Category" />
+  <select-list :api="selectCategory" route="category-select" name="Category" category />
 </template>
 
 <script setup>

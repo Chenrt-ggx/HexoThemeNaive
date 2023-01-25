@@ -3,11 +3,17 @@
     <n-grid-item span="28 800:24 1080:20" offset="2 800:4 1080:6">
       <n-space v-if="selected" vertical :size="30">
         <n-breadcrumb>
-          <n-breadcrumb-item v-if="props.name && showShorter">
+          <n-breadcrumb-item v-if="props.name && !showShorter">
             <span style="font-size: 18px">{{ props.name }}</span>
           </n-breadcrumb-item>
           <n-breadcrumb-item v-for="(i, index) in breadcrumb" :key="index">
-            <span style="font-size: 18px">{{ i }}</span>
+            <router-link
+              v-if="props.category"
+              :to="{ name: props.route, params: { id: [...breadcrumb.slice(0, index + 1), 1] } }"
+            >
+              <span style="font-size: 18px">{{ i }}</span>
+            </router-link>
+            <span v-else style="font-size: 18px">{{ i }}</span>
           </n-breadcrumb-item>
         </n-breadcrumb>
         <simple-blog v-for="(i, index) in selected.content" :key="index" :blog="i" />
@@ -51,8 +57,15 @@ const props = defineProps({
   name: {
     type: String,
     default: ''
+  },
+  category: {
+    type: Boolean,
+    default: false
   }
 });
+
+const route = useRoute();
+const router = useRouter();
 
 const selected = ref();
 const refreshItemList = async (to, from) => {
@@ -64,8 +77,6 @@ const refreshItemList = async (to, from) => {
   }
 };
 
-const route = useRoute();
-const router = useRouter();
 onMounted(refreshItemList);
 onBeforeRouteUpdate(refreshItemList);
 const handleUpdate = async (value) => {
@@ -76,7 +87,7 @@ const handleUpdate = async (value) => {
 };
 
 const flag = flagStore();
-const showShorter = computed(() => !(flag.mobile && props.name.length >= 8 && route.params.id.length >= 4));
+const showShorter = computed(() => flag.mobile && props.name.length >= 8 && route.params.id.length >= 4);
 const breadcrumb = computed(() => {
   const id = route.params.id;
   return id.slice(0, id.length - 1);
