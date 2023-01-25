@@ -1,7 +1,7 @@
 <template>
   <n-grid cols="32" item-responsive style="margin-top: 30px; text-align: left">
     <n-grid-item span="28 800:24 1080:20" offset="2 800:4 1080:6">
-      <div v-if="content" style="margin-bottom: -10px">
+      <div v-if="content" style="margin-bottom: -20px">
         <n-space size="large" style="margin: 15px 0 40px">
           <span v-for="(i, index) in content.tags" :key="index">
             <router-link :to="{ name: 'tag-select', params: { id: [i.name, 1] } }" style="text-decoration: none">
@@ -22,7 +22,7 @@
               <router-link :to="{ name: 'tag-select', params: { id: [i.name, 1] } }">
                 <n-h2 style="margin-bottom: 0">
                   <n-space align="center" style="margin-left: 2px">
-                    <n-icon :component="Tag" style="display: inline-block" />
+                    <n-icon :component="Tag" />
                     <span style="display: inline-block; margin-bottom: 6px">{{ i.name }}</span>
                   </n-space>
                 </n-h2>

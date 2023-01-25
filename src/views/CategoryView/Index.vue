@@ -1,7 +1,7 @@
 <template>
   <n-grid cols="64" item-responsive style="margin-top: 30px; text-align: left">
     <n-grid-item span="60 800:48 1080:40" offset="1 800:7 1080:12">
-      <div v-if="content" style="margin-bottom: -10px">
+      <div v-if="content" style="margin-bottom: -15px">
         <n-menu :options="content" default-expand-all />
       </div>
       <n-space justify="center" v-else>
@@ -28,12 +28,15 @@ const mapContent = (src, mapper, route) => {
     i.subCategories && i.subCategories.forEach((j) => j.keys.forEach((k) => unique.add(k)));
     const select = i.keys.filter((j) => !unique.has(j));
     const next = [...route, i.name];
-    const children = select.map((j) => ({
-      label: getNameRoute(j, 'blog', mapper[j].title),
-      key: next.join('/') + '/' + j,
-      icon: getNIcon(Blog)
-    }));
+    const children = [];
     i.subCategories && mapContent(i.subCategories, mapper, next).forEach((j) => children.push(j));
+    select.forEach((j) => {
+      children.push({
+        label: getNameRoute(j, 'blog', mapper[j].title),
+        key: next.join('/') + '/' + j,
+        icon: getNIcon(Blog)
+      });
+    });
     return {
       label: getNameRoute([...next, 1], 'category-select', i.name),
       key: next.join('/'),
