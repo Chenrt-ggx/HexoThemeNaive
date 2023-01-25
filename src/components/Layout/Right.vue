@@ -18,12 +18,13 @@
     </n-switch>
     <n-divider vertical />
     <router-link :to="{ name: 'about' }">
-      <n-popover trigger="hover" placement="bottom">
+      <n-popover trigger="hover" placement="bottom" v-if="$route.name !== 'about'">
         <template #trigger>
           <n-avatar circle :src="config.avatar" class="avatar" @click="handleClick" />
         </template>
         <span @click="$router.push({ name: 'about' })">About</span>
       </n-popover>
+      <n-avatar v-else circle :src="config.avatar" class="avatar" @click="handleClick" />
     </router-link>
   </n-space>
   <n-modal :show="config.egg != null && showEgg" @update:show="handleEgg">
@@ -53,7 +54,6 @@ const handlePlayer = (value) => {
   player.value[value ? 'play' : 'pause']();
   playerMode.value = value;
 };
-
 const handleMode = (value) => {
   mode.dark = value;
   location.reload();

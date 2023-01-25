@@ -7,7 +7,8 @@ const getNIcon = (icon) => {
 };
 
 const getDestRoute = (dest, name) => {
-  return () => h(RouterLink, { to: dest }, { default: () => name });
+  const child = h('div', { style: { marginTop: '2px' } }, name);
+  return () => h(RouterLink, { to: dest }, () => child);
 };
 
 const getNameRoute = (params, name, title) => {
