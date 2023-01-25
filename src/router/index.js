@@ -13,8 +13,14 @@ const routes = [
       {
         path: '/blog/:id',
         name: 'blog',
-        component: () => import('@/views/Blog.vue'),
+        component: () => import('@/views/BlogView/Index.vue'),
         meta: { title: 'Blog' }
+      },
+      {
+        path: '/blogs/:id',
+        name: 'blogs',
+        component: () => import('@/views/BlogView/Select.vue'),
+        meta: { title: 'Blogs' }
       },
       {
         path: '/category',

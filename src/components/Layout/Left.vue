@@ -7,7 +7,7 @@
     </template>
     <n-menu :options="menuOptions" :value="$route.path" style="width: 60vw" />
   </n-popover>
-  <n-menu v-else :options="menuOptions" :value="$route.path" mode="horizontal" style="margin-top: 3px" />
+  <n-menu v-else :options="menuOptions" :value="$route.name" mode="horizontal" style="margin-top: 3px" />
 </template>
 
 <script setup>
@@ -21,28 +21,28 @@ const flag = flagStore();
 const menuOptions = [
   {
     label: getDestRoute('/', 'Home'),
-    key: '/',
+    key: 'home',
     icon: getNIcon(Home)
   },
   {
+    label: getDestRoute('/blogs/' + 1, 'Blogs'),
+    key: 'blogs',
+    icon: getNIcon(InformationSquare)
+  },
+  {
     label: getDestRoute('/category', 'Categories'),
-    key: '/category',
+    key: 'category',
     icon: getNIcon(CollapseCategories)
   },
   {
     label: getDestRoute('/tag', 'Tags'),
-    key: '/tag',
+    key: 'tag',
     icon: getNIcon(TagGroup)
   },
   {
     label: getDestRoute('/archive', 'Archives'),
-    key: '/archive',
+    key: 'archive',
     icon: getNIcon(Archive)
-  },
-  {
-    label: getDestRoute('/about', 'About'),
-    key: '/about',
-    icon: getNIcon(InformationSquare)
   }
 ];
 </script>

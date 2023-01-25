@@ -3,7 +3,7 @@
     <n-grid-item span="28 800:24 1080:20" offset="2 800:4 1080:6">
       <n-space v-if="selected" vertical :size="30">
         <n-breadcrumb>
-          <n-breadcrumb-item v-if="showShorter">
+          <n-breadcrumb-item v-if="props.name && showShorter">
             <span style="font-size: 18px">{{ props.name }}</span>
           </n-breadcrumb-item>
           <n-breadcrumb-item v-for="(i, index) in breadcrumb" :key="index">
@@ -50,7 +50,7 @@ const props = defineProps({
   },
   name: {
     type: String,
-    required: true
+    default: ''
   }
 });
 
@@ -70,7 +70,7 @@ onMounted(refreshItemList);
 onBeforeRouteUpdate(refreshItemList);
 const handleUpdate = async (value) => {
   const id = route.params.id;
-  const dest = [...id.slice(0, id.length - 1), value];
+  const dest = typeof id === 'string' ? value : [...id.slice(0, id.length - 1), value];
   window.$scrollTo({ top: 0, behavior: 'smooth' });
   await router.push({ name: props.route, params: { id: dest } });
 };
