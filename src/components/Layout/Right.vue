@@ -17,12 +17,14 @@
       </template>
     </n-switch>
     <n-divider vertical />
-    <n-avatar
-      circle
-      :src="config.avatar"
-      style="margin: 6px 20px 6px 0; float: left; background-color: #00000000"
-      @click="handleClick"
-    />
+    <router-link :to="{ name: 'about' }">
+      <n-popover trigger="hover" placement="bottom">
+        <template #trigger>
+          <n-avatar circle :src="config.avatar" class="avatar" @click="handleClick" />
+        </template>
+        <span @click="$router.push({ name: 'about' })">About</span>
+      </n-popover>
+    </router-link>
   </n-space>
   <n-modal :show="config.egg != null && showEgg" @update:show="handleEgg">
     <div class="egg-container">
@@ -35,8 +37,9 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { Sun, Moon, Music } from '@vicons/carbon';
-import { NDivider, NAvatar, NSwitch, NSpace, NModal, NIcon } from 'naive-ui';
+import { NDivider, NPopover, NAvatar, NSwitch, NSpace, NModal, NIcon } from 'naive-ui';
 import modeStore from '@/stores/mode';
 import configStore from '@/stores/config';
 import PlaySpin from '@/components/PlaySpin';
@@ -75,7 +78,9 @@ const railStyle = ({ focused, checked }) => {
 const showEgg = ref(false);
 const handleEgg = (value) => (showEgg.value = value);
 let count = 0;
+const router = useRouter();
 const handleClick = () => {
+  router.push({ name: 'about' });
   if (++count === 21) {
     showEgg.value = true;
     count = 0;
@@ -84,6 +89,12 @@ const handleClick = () => {
 </script>
 
 <style scoped lang="scss">
+.avatar {
+  margin: 6px 20px 6px 0;
+  float: left;
+  background-color: #00000000;
+}
+
 .egg-container {
   padding: 10px;
   text-align: center;

@@ -6,7 +6,7 @@
     <n-text style="font-size: 16px">
       {{ config.subtitle || 'Loading...' }}
     </n-text>
-    <n-space justify="center" style="margin-top: 18px">
+    <n-space :justify="flag.mobile ? 'left' : 'center'" style="margin-top: 18px">
       <n-button style="width: 100px" type="default" size="large" @click="handleGithub">
         <n-icon :component="LogoGithub" style="margin-right: 8px" />
         <span>Github</span>
@@ -21,8 +21,13 @@
   <div ref="mark" />
   <n-grid cols="32" item-responsive style="margin-top: 30px; text-align: left">
     <n-grid-item span="28 800:24 1080:20" offset="2 800:4 1080:6">
-      <n-space v-if="selected" vertical :size="30">
+      <n-space v-if="selected" vertical :size="30" style="margin-bottom: -10px">
         <simple-blog v-for="(i, index) in selected" :key="index" :blog="i" />
+        <n-space justify="center">
+          <router-link :to="{ name: 'blogs', params: { id: 1 } }" style="text-decoration: none">
+            <n-button quaternary round type="success" size="large">Read More</n-button>
+          </router-link>
+        </n-space>
       </n-space>
       <n-space justify="center" v-else>
         <n-spin style="margin-top: 30vh">
@@ -80,6 +85,11 @@ const handleGithub = () => config.github && window.open(config.github);
   content: '';
   width: 100%;
   height: 56px;
+}
+
+.naive-title {
+  line-height: 1;
+  margin-bottom: 24px;
 }
 
 .left-image {
