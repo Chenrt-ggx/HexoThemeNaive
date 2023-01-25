@@ -9,7 +9,7 @@
     <n-space :justify="flag.mobile ? 'left' : 'center'" style="margin-top: 18px">
       <n-button style="width: 100px" type="default" size="large" @click="handleGithub">
         <n-icon :component="LogoGithub" style="margin-right: 8px" />
-        <span>Github</span>
+        <span style="margin-top: 2px">Github</span>
       </n-button>
       <n-button :ghost="mode.dark" style="width: 100px" type="primary" size="large" @click="handleScroll">
         Let's Go !
@@ -21,9 +21,9 @@
   <div ref="mark" />
   <n-grid cols="32" item-responsive style="margin-top: 30px; text-align: left">
     <n-grid-item span="28 800:24 1080:20" offset="2 800:4 1080:6">
-      <n-space v-if="selected" vertical :size="30" style="margin-bottom: -10px">
+      <n-space v-if="selected" vertical :size="30" style="margin-bottom: -20px">
         <simple-blog v-for="(i, index) in selected" :key="index" :blog="i" />
-        <n-space justify="center">
+        <n-space justify="center" :style="{ marginTop: flag.mobile ? '-6px' : '12px' }">
           <router-link :to="{ name: 'blogs', params: { id: 1 } }" style="text-decoration: none">
             <n-button quaternary round type="success" size="large">Read More</n-button>
           </router-link>
@@ -67,18 +67,18 @@ onMounted(async () => {
 });
 
 const mark = ref();
-const handleScroll = () => window.$scrollTo({ top: mark.value.offsetTop, behavior: 'smooth' });
+const handleScroll = () => window.$scrollTo({ top: mark.value.offsetTop - 20, behavior: 'smooth' });
 const handleGithub = () => config.github && window.open(config.github);
 </script>
 
 <style scoped lang="scss">
 .banner {
-  height: calc(100vh - 56px);
   display: flex;
-  flex-direction: column;
   position: relative;
   text-align: center;
+  flex-direction: column;
   justify-content: center;
+  height: calc(100vh - 56px);
 }
 
 .banner::after {
@@ -93,28 +93,28 @@ const handleGithub = () => config.github && window.open(config.github);
 }
 
 .left-image {
-  position: absolute;
   top: 50%;
+  position: absolute;
   transform: translateY(-50%);
 }
 
 .right-image {
-  position: absolute;
   top: 50%;
+  position: absolute;
   transform: translateY(-50%);
 }
 
 @media only screen and (max-width: 1920px) {
   .left-image {
+    min-width: 440px;
     right: calc(50% + 270px);
     width: calc(50% - 270px);
-    min-width: 440px;
   }
 
   .right-image {
+    min-width: 440px;
     left: calc(50% + 270px);
     width: calc(50% - 270px);
-    min-width: 440px;
   }
 }
 
@@ -132,23 +132,23 @@ const handleGithub = () => config.github && window.open(config.github);
 
 @media only screen and (max-width: 800px) {
   .banner {
+    transform: none;
     position: static;
     text-align: left;
-    padding-left: 16px;
-    transform: none;
-    padding-top: 60px;
-    padding-right: 16px;
     min-height: 550px;
+    padding-top: 60px;
+    padding-left: 16px;
+    padding-right: 16px;
     height: calc(100vh - 124px);
   }
 
   .left-image {
-    position: relative;
-    left: -16px;
-    min-width: unset;
-    width: 300px;
     top: 8px;
+    left: -16px;
+    width: 300px;
+    min-width: unset;
     transform: none;
+    position: relative;
   }
 }
 </style>
