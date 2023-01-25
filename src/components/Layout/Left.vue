@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { getNamedRoute, getNIcon } from '@/libs/render';
+import { getDestRoute, getNIcon } from '@/libs/render';
 import { NMenu, NIcon, NPopover, NButton } from 'naive-ui';
 import { Archive, CollapseCategories, Home, InformationSquare, Menu as VerticalMenu, TagGroup } from '@vicons/carbon';
 import flagStore from '@/stores/flag';
@@ -20,27 +20,27 @@ const flag = flagStore();
 
 const menuOptions = [
   {
-    label: getNamedRoute('/', 'Home'),
+    label: getDestRoute('/', 'Home'),
     key: '/',
     icon: getNIcon(Home)
   },
   {
-    label: getNamedRoute('/category', 'Categories'),
+    label: getDestRoute('/category', 'Categories'),
     key: '/category',
     icon: getNIcon(CollapseCategories)
   },
   {
-    label: getNamedRoute('/tag', 'Tags'),
+    label: getDestRoute('/tag', 'Tags'),
     key: '/tag',
     icon: getNIcon(TagGroup)
   },
   {
-    label: getNamedRoute('/archive', 'Archives'),
+    label: getDestRoute('/archive', 'Archives'),
     key: '/archive',
     icon: getNIcon(Archive)
   },
   {
-    label: getNamedRoute('/about', 'About'),
+    label: getDestRoute('/about', 'About'),
     key: '/about',
     icon: getNIcon(InformationSquare)
   }
