@@ -41,6 +41,13 @@
           </n-h2>
         </n-timeline-item>
       </n-timeline>
+      <n-space justify="center" v-else>
+        <n-spin style="margin-top: 30vh">
+          <template #description>
+            <n-text type="success">Loading...</n-text>
+          </template>
+        </n-spin>
+      </n-space>
     </n-grid-item>
   </n-grid>
 </template>
@@ -49,7 +56,8 @@
 import { ref, onMounted } from 'vue';
 import { getArchive } from '@/api/select';
 import { Time, FolderAdd } from '@vicons/carbon';
-import { NH2, NIcon, NSpace, NGrid, NGridItem, NTimeline, NTimelineItem, NBreadcrumb, NBreadcrumbItem } from 'naive-ui';
+import { NH2, NSpin, NText, NIcon, NSpace } from 'naive-ui';
+import { NGrid, NGridItem, NTimeline, NTimelineItem, NBreadcrumb, NBreadcrumbItem } from 'naive-ui';
 import TinyBlog from '@/components/Blog/TinyBlog';
 
 const content = ref();

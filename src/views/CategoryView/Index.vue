@@ -2,6 +2,13 @@
   <n-grid cols="64" item-responsive style="margin-top: 30px; text-align: left">
     <n-grid-item span="60 800:48 1080:40" offset="1 800:7 1080:12">
       <n-menu v-if="content" :options="content" default-expand-all />
+      <n-space justify="center" v-else>
+        <n-spin style="margin-top: 30vh">
+          <template #description>
+            <n-text type="success">Loading...</n-text>
+          </template>
+        </n-spin>
+      </n-space>
     </n-grid-item>
   </n-grid>
 </template>
@@ -9,9 +16,9 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { getCategory } from '@/api/select';
-import { NMenu, NGrid, NGridItem } from 'naive-ui';
 import { getNIcon, getNameRoute } from '@/libs/render';
 import { Blog, CollapseCategories } from '@vicons/carbon';
+import { NSpin, NText, NSpace, NMenu, NGrid, NGridItem } from 'naive-ui';
 
 const mapContent = (src, mapper, route) => {
   return src.map((i) => {

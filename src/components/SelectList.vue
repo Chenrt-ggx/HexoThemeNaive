@@ -21,6 +21,13 @@
           />
         </n-space>
       </n-space>
+      <n-space justify="center" v-else>
+        <n-spin style="margin-top: 30vh">
+          <template #description>
+            <n-text type="success">Loading...</n-text>
+          </template>
+        </n-spin>
+      </n-space>
     </n-grid-item>
   </n-grid>
 </template>
@@ -28,7 +35,7 @@
 <script setup>
 import { ref, computed, onMounted, defineProps } from 'vue';
 import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router';
-import { NSpace, NGrid, NGridItem, NPagination, NBreadcrumb, NBreadcrumbItem } from 'naive-ui';
+import { NSpin, NText, NSpace, NGrid, NGridItem, NPagination, NBreadcrumb, NBreadcrumbItem } from 'naive-ui';
 import flagStore from '@/stores/flag';
 import SimpleBlog from '@/components/Blog/SimpleBlog';
 
