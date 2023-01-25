@@ -10,11 +10,10 @@ import FullBlog from '@/components/Blog/FullBlog';
 
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
 
 const post = ref();
 onMounted(async () => {
-  const result = await getPost(id);
+  const result = await getPost(route.params.id);
   if (Object.keys(result).length === 0) {
     await router.push('/error');
   } else {

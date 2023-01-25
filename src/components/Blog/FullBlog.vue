@@ -9,7 +9,7 @@
         <n-space vertical size="large" v-if="props.blog">
           <tags v-if="props.blog.tags.length" :tags="props.blog.tags" />
           <categories v-if="props.blog.categories.length" :categories="props.blog.categories" />
-          <span />
+          <span v-if="props.blog.tags.length || props.blog.categories.length" />
           <div
             class="markdown-body"
             style="background-color: #00000000"

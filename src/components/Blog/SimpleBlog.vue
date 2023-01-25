@@ -1,13 +1,13 @@
 <template>
   <n-card hoverable>
     <template #header>
-      <card-header v-if="props.blog" :blog="props.blog" :link="link" />
+      <card-header v-if="props.blog" :blog="props.blog" :link="link" :dense="false" />
       <n-skeleton v-else text style="width: 50%; float: left" />
     </template>
     <n-space vertical size="large">
       <n-space v-if="props.blog && !flag.mobile" align="center" size="small">
         <tags :tags="props.blog.tags" />
-        <n-divider vertical v-if="!flag.mobile && props.blog.tags.length && props.blog.categories.length" />
+        <n-divider vertical v-if="props.blog.tags.length && props.blog.categories.length" />
         <categories :categories="props.blog.categories" />
       </n-space>
       <tags v-if="props.blog && flag.mobile && props.blog.tags.length" :tags="props.blog.tags" />

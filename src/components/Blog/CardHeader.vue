@@ -1,8 +1,8 @@
 <template>
-  <component :is="props.dense ? NH3 : NH2" :prefix="props.bar ? 'bar' : undefined" style="margin-bottom: 0">
-    <div :style="flag.mobile ? {} : { display: 'inline-block', width: 'calc(100% - 120px)' }">
+  <component :is="props.dense ? WrappedText : NH2" prefix="bar" style="margin-bottom: 0">
+    <div :style="titleStyle">
       <n-space align="center" :wrap="false">
-        <n-icon style="margin-top: 10px" :component="BlogIcon" />
+        <n-icon :style="{ marginTop: props.dense ? '8px' : '10px' }" :component="BlogIcon" />
         <div style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-right: 20px">
           <router-link :to="props.link" class="link-fix">
             {{ props.blog.title }}
@@ -14,7 +14,7 @@
       quaternary
       v-if="props.button && !flag.mobile"
       @click="$router.push(props.link)"
-      style="margin-right: 2px; margin-top: 1px; display: inline-block; float: right"
+      style="margin-right: 2px; margin-top: 1px; float: right"
     >
       <n-icon :component="View" />
       <router-link :to="props.link" class="link-fix" style="margin-left: 10px">Read More</router-link>
@@ -23,9 +23,9 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { h, computed, defineProps } from 'vue';
 import { View, Blog as BlogIcon } from '@vicons/carbon';
-import { NH2, NH3, NIcon, NSpace, NButton } from 'naive-ui';
+import { NH2, NText, NIcon, NSpace, NButton } from 'naive-ui';
 import flagStore from '@/stores/flag';
 
 const props = defineProps({
@@ -37,10 +37,6 @@ const props = defineProps({
     type: Object,
     required: true
   },
-  bar: {
-    type: Boolean,
-    default: true
-  },
   button: {
     type: Boolean,
     default: false
@@ -51,7 +47,21 @@ const props = defineProps({
   }
 });
 
+const WrappedText = (props, context) => h(NText, context.style, context.slots);
+
 const flag = flagStore();
+const titleStyle = computed(() => {
+  const result = {};
+  if (!flag.mobile) {
+    result.display = 'inline-block';
+    result.width = props.button ? 'calc(100% - 125px)' : '100%';
+  }
+  if (props.dense) {
+    result.fontSize = '16px';
+    result.marginTop = '2px';
+  }
+  return result;
+});
 </script>
 
 <style scoped lang="scss" src="./common.scss" />
