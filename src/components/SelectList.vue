@@ -43,6 +43,7 @@ import { ref, computed, onMounted, defineProps } from 'vue';
 import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router';
 import { NSpin, NText, NSpace, NGrid, NGridItem, NPagination, NBreadcrumb, NBreadcrumbItem } from 'naive-ui';
 import flagStore from '@/stores/flag';
+import configStore from '@/stores/config';
 import SimpleBlog from '@/components/Blog/SimpleBlog';
 
 const props = defineProps({
@@ -66,10 +67,17 @@ const props = defineProps({
 
 const route = useRoute();
 const router = useRouter();
+const config = configStore();
 
 const selected = ref();
 const refreshItemList = async (to, from) => {
-  const result = await props.api(from || to ? to.params.id : route.params.id);
+  const id = from || to ? to.params.id : route.params.id;
+  if (typeof id === 'string') {
+    document.title = [config.title, 'Blogs'].join(' - ');
+  } else {
+    document.title = [config.title, ...id.slice(0, id.length - 1)].join(' - ');
+  }
+  const result = await props.api(id);
   if (Object.keys(result).length === 0) {
     await router.push('/error');
   } else {
@@ -79,6 +87,7 @@ const refreshItemList = async (to, from) => {
 
 onMounted(refreshItemList);
 onBeforeRouteUpdate(refreshItemList);
+document.title = [config.title, 'Loading...'].join(' - ');
 const handleUpdate = async (value) => {
   const id = route.params.id;
   const dest = typeof id === 'string' ? value : [...id.slice(0, id.length - 1), value];

@@ -55,6 +55,7 @@ const flag = flagStore();
 const mode = modeStore();
 const config = configStore();
 const router = useRouter();
+document.title = config.title;
 
 const selected = ref();
 onMounted(async () => {

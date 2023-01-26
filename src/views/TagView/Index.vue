@@ -54,10 +54,14 @@ import { Tag } from '@vicons/carbon';
 import { getTag } from '@/api/select';
 import { NGrid, NGridItem, NTimeline, NTimelineItem } from 'naive-ui';
 import { NH2, NSpin, NText, NBadge, NDivider, NTag, NIcon, NSpace } from 'naive-ui';
+import configStore from '@/stores/config';
 import TinyBlog from '@/components/Blog/TinyBlog';
 
 const content = ref();
 onMounted(async () => {
   content.value = await getTag();
 });
+
+const config = configStore();
+document.title = [config.title, 'Tags'].join(' - ');
 </script>

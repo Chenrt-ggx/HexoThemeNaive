@@ -67,6 +67,7 @@ import { Time, FolderAdd, ChevronRight } from '@vicons/carbon';
 import { NCard, NSpin, NDivider, NText, NIcon, NBadge, NSpace } from 'naive-ui';
 import { NGrid, NGridItem, NTimeline, NTimelineItem, NBreadcrumb, NBreadcrumbItem } from 'naive-ui';
 import flagStore from '@/stores/flag';
+import configStore from '@/stores/config';
 import TinyBlog from '@/components/Blog/TinyBlog';
 
 const content = ref();
@@ -75,4 +76,6 @@ onMounted(async () => {
 });
 
 const flag = flagStore();
+const config = configStore();
+document.title = [config.title, 'Archives'].join(' - ');
 </script>

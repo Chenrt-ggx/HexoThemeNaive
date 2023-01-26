@@ -21,6 +21,7 @@ import { getCategory } from '@/api/select';
 import { getNIcon, getNameRoute } from '@/libs/render';
 import { Blog, CollapseCategories } from '@vicons/carbon';
 import { NSpin, NText, NSpace, NMenu, NGrid, NGridItem } from 'naive-ui';
+import configStore from '@/stores/config';
 
 const mapContent = (src, mapper, route) => {
   return src.map((i) => {
@@ -51,4 +52,7 @@ onMounted(async () => {
   const buf = await getCategory();
   content.value = mapContent(buf.categories, buf.posts, []);
 });
+
+const config = configStore();
+document.title = [config.title, 'Categories'].join(' - ');
 </script>
