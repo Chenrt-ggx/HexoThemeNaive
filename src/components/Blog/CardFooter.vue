@@ -55,7 +55,7 @@ const props = defineProps({
 
 const flag = flagStore();
 const length = computed(() => 'Word count: ' + props.blog.length);
-const time = computed(() => 'Reading time: ' + props.blog.time + ' min');
+const time = computed(() => 'Reading time: ' + props.blog.time);
 
 const format = 'YYYY-MM-DD HH:mm:ss';
 const createdMoment = computed(() => moment(props.blog.created));

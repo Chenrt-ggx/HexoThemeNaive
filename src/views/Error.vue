@@ -14,6 +14,10 @@
 
 <script setup>
 import { NButton } from 'naive-ui';
+import configStore from '@/stores/config';
+
+const config = configStore();
+document.title = [config.title, 'Error'].join(' - ');
 </script>
 
 <style scoped lang="scss">
