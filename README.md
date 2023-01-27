@@ -1,9 +1,9 @@
-# HexoThemeNaive
+# Hexo Theme Naive
 
 ![license](https://img.shields.io/github/license/Chenrt-ggx/HexoThemeNaive)
 ![version](https://img.shields.io/github/package-json/v/Chenrt-ggx/HexoThemeNaive)
 
-A Vue3 and Naive UI Based CSR Hexo Theme.
+A Vue3 and Naive UI Based CSR Hexo Blog Theme.
 
 - For demo, see [this page](https://chenrt-ggx.github.io/HexoDemoNaive).
 - For usage, see [this blog](https://chenrt-ggx.github.io/category/Hexo).
