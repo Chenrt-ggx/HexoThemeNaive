@@ -1,0 +1,42 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - name: Install and Build
+        run: |
+          npm install
+          npm run-script build
+      - name: Zip Files
+        run: |
+          cd dist
+          python format.py
+          find . -name '*' | xargs zip -o Naive.zip
+      - name: Set Date Time
+        if: ${{ contains(github.event.head_commit.message, 'release') }}
+        id: datetime
+        run: |
+          echo "date=`date +'%Y/%m/%d'`" >> $GITHUB_OUTPUT
+          echo "time=`date +'%H:%M:%S'`" >> $GITHUB_OUTPUT
+          echo "datetime=`date +'%Y/%m/%d %H:%M:%S'`" >> $GITHUB_OUTPUT
+      - name: Create Release
+        if: ${{ contains(github.event.head_commit.message, 'release') }}
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Naive
+          prerelease: false
+          draft: false
+          tag_name: Tag-${{ steps.datetime.outputs.date }}
+          files: |
+            dist/Naive.zip
+            LICENSE
