@@ -1,6 +1,6 @@
 <template>
   <div class="banner">
-    <n-text style="display: block; font-size: 70px" class="naive-title">
+    <n-text style="display: block; font-size: 70px; margin-bottom: 24px" class="main-title">
       {{ config.title || 'Loading...' }}
     </n-text>
     <n-text style="font-size: 16px">
@@ -86,11 +86,6 @@ const handleGithub = () => config.github && window.open(config.github);
   content: '';
   width: 100%;
   height: 56px;
-}
-
-.naive-title {
-  line-height: 1;
-  margin-bottom: 24px;
 }
 
 .left-image {

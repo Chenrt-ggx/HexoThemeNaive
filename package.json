@@ -9,6 +9,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@fontsource/noto-serif-jp": "^4.5.11",
+    "@fontsource/zcool-xiaowei": "^4.5.12",
     "axios": "^1.2.3",
     "core-js": "^3.8.3",
     "github-markdown-css": "^5.1.0",

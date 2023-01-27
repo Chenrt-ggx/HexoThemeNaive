@@ -1,4 +1,12 @@
+@import 'vfonts/Lato.css';
+@import '@fontsource/zcool-xiaowei/400.css';
+@import '@fontsource/noto-serif-jp/400.css';
 @import 'katex/dist/katex.min.css';
+
+.main-title {
+  line-height: 1;
+  font-family: 'ZCOOL XiaoWei', 'Noto Serif JP', sans-serif;
+}
 
 .hljs-blob-num::before {
   content: attr(data-line-number);

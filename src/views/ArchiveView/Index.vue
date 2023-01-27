@@ -41,8 +41,8 @@
           </n-timeline>
         </n-timeline-item>
         <n-timeline-item>
-          <n-text style="font-size: 22px">
-            <n-space align="center" style="margin-left: 2px; color: #7f7f7f">
+          <n-text style="font-size: 22px" depth="3">
+            <n-space align="center" style="margin-left: 2px">
               <n-icon :component="FolderAdd" />
               <span style="display: inline-block; margin-bottom: 5px">Dream starts from here</span>
             </n-space>
