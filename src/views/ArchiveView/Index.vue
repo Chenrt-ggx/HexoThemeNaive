@@ -9,7 +9,7 @@
                 <n-icon :component="Time" />
                 <span style="display: inline-block; margin-bottom: 6px">{{ i.id }}</span>
                 <n-icon :component="ChevronRight" />
-                <n-badge :value="i.items.length" type="info" style="margin-bottom: 8px" />
+                <n-badge :value="countNodes(i)" type="info" style="margin-bottom: 8px" />
               </n-space>
             </n-text>
           </template>
@@ -78,4 +78,10 @@ onMounted(async () => {
 const flag = flagStore();
 const config = configStore();
 document.title = [config.title, 'Archives'].join(' - ');
+
+const countNodes = (node) => {
+  let result = 0;
+  node.items.forEach((i) => (result += i.keys.length));
+  return result;
+};
 </script>

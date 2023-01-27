@@ -2,7 +2,10 @@
   <component :is="props.dense ? WrappedText : NH2" prefix="bar" style="margin-bottom: 0">
     <div :style="titleStyle">
       <n-space align="center" :wrap="false">
-        <n-icon :style="{ marginTop: props.dense ? '8px' : '10px' }" :component="BlogIcon" />
+        <n-icon
+          :style="{ marginTop: props.dense ? '8px' : '10px' }"
+          :component="props.blog.link ? LinkIcon : BlogIcon"
+        />
         <div style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-right: 20px">
           <router-link :to="props.link" class="link-fix">
             {{ props.blog.title }}
@@ -24,8 +27,8 @@
 
 <script setup>
 import { h, computed, defineProps } from 'vue';
-import { View, Blog as BlogIcon } from '@vicons/carbon';
 import { NH2, NText, NIcon, NSpace, NButton } from 'naive-ui';
+import { View, Blog as BlogIcon, Link as LinkIcon } from '@vicons/carbon';
 import flagStore from '@/stores/flag';
 
 const props = defineProps({

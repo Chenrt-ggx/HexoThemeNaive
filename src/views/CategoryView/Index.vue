@@ -19,7 +19,7 @@
 import { ref, onMounted } from 'vue';
 import { getCategory } from '@/api/select';
 import { getNIcon, getNameRoute } from '@/libs/render';
-import { Blog, CollapseCategories } from '@vicons/carbon';
+import { Blog, Link, CollapseCategories } from '@vicons/carbon';
 import { NSpin, NText, NSpace, NMenu, NGrid, NGridItem } from 'naive-ui';
 import configStore from '@/stores/config';
 
@@ -35,7 +35,7 @@ const mapContent = (src, mapper, route) => {
       children.push({
         label: getNameRoute(j, 'blog', mapper[j].title),
         key: next.join('/') + '/' + j,
-        icon: getNIcon(Blog)
+        icon: getNIcon(mapper[j].link ? Link : Blog)
       });
     });
     return {

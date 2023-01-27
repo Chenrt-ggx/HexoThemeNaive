@@ -2,7 +2,7 @@
   <n-popover trigger="click" v-if="flag.mobile">
     <template #trigger>
       <n-button style="font-size: 24px">
-        <n-icon :component="VerticalMenu" />
+        <n-icon :component="Menu" />
       </n-button>
     </template>
     <n-menu :options="menuOptions" :value="$route.path" style="width: 60vw" />
@@ -13,7 +13,7 @@
 <script setup>
 import { getDestRoute, getNIcon } from '@/libs/render';
 import { NMenu, NIcon, NPopover, NButton } from 'naive-ui';
-import { Archive, CollapseCategories, Home, InformationSquare, Menu as VerticalMenu, TagGroup } from '@vicons/carbon';
+import { Archive, CollapseCategories, Home, InformationSquare, Menu, TagGroup } from '@vicons/carbon';
 import flagStore from '@/stores/flag';
 
 const flag = flagStore();
