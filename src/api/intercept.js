@@ -10,6 +10,7 @@ const getMessage = (data, name) => {
 
 axios.interceptors.request.use(
   (request) => {
+    request.baseURL = process.env.BASE_URL;
     request.headers['Content-Type'] = 'application/json';
     return request;
   },

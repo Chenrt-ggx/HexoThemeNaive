@@ -1,9 +1,9 @@
 import { getRequest } from '@/api/intercept';
 
 export const getConfig = () => {
-  return getRequest('/api/getInfo');
+  return getRequest('api/getInfo');
 };
 
 export const getAbout = () => {
-  return getRequest('/api/getAbout');
+  return getRequest('api/getAbout');
 };
