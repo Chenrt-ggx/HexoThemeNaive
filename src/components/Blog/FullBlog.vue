@@ -12,7 +12,7 @@
           <span v-if="props.blog.tags.length || props.blog.categories.length" />
           <div
             class="markdown-body"
-            style="background-color: #00000000"
+            style="background-color: transparent"
             v-html="props.blog.raw"
             v-category="setCategory"
             v-highlight

@@ -90,9 +90,9 @@ const handleClick = () => {
 
 <style scoped lang="scss">
 .avatar {
-  margin: 6px 20px 6px 0;
   float: left;
-  background-color: #00000000;
+  margin: 6px 20px 6px 0;
+  background-color: transparent;
 }
 
 .egg-container {
