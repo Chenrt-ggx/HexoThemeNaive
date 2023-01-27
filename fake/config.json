@@ -1,0 +1,28 @@
+{
+    "categories": {
+        "total": 10,
+        "iterate": 0.4,
+        "none": 0.2
+    },
+    "tags": {
+        "total": 10,
+        "iterate": 0.6,
+        "none": 0.2
+    },
+    "date": {
+        "total": 50,
+        "iterate": 0.2,
+        "from": "2019-01-01",
+        "to": "2023-01-01"
+    },
+    "word": {
+        "iterate": 0.3,
+        "from": 1,
+        "to": 8
+    },
+    "paragraph": {
+        "iterate": 0.8,
+        "from": 1,
+        "to": 8
+    }
+}
