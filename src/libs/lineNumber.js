@@ -1,5 +1,7 @@
 const numberStyle = ['margin: 0 20px 0 10px', 'float: right', 'color: #7f7f7f'].join(';');
-const basicStyle = ['border: none', 'margin: 0', 'padding: 0', 'background-color: transparent'].join(';');
+const clearList = ['border: none', 'margin: 0', 'padding: 0'];
+const scrollFixList = ['scrollbar-width: thin', 'scrollbar-color: var(--n-scrollbar-color) transparent'];
+const basicStyle = [...clearList, ...scrollFixList, 'background-color: transparent'].join(';');
 
 const getLinesCount = (text) => (text.trim().match(/\r\n|\r|\n/g) || []).length;
 
