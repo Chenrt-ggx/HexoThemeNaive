@@ -6,7 +6,7 @@
 A Vue3 and Naive UI Based CSR Hexo Blog Theme without Gallery Post and Excerpts Support.
 
 - For demo, see [this page](https://chenrt-ggx.github.io/HexoDemoNaive).
-- For usage, see [this blog](https://chenrt-ggx.github.io/category/Hexo).
+- For usage, see [this blog](https://chenrt-ggx.github.io/category/Hexo/1).
 
 ## Project setup
 
