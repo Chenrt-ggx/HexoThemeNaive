@@ -9,7 +9,7 @@
     <n-space :justify="flag.mobile ? 'left' : 'center'" style="margin-top: 18px">
       <n-button style="width: 100px" type="default" size="large" @click="handleGithub">
         <n-icon :component="LogoGithub" style="margin-right: 8px" />
-        <span style="margin-top: 2px">Github</span>
+        <span style="margin-top: 2px">GitHub</span>
       </n-button>
       <n-button :ghost="mode.dark" style="width: 100px" type="primary" size="large" @click="handleScroll">
         Let's Go !
