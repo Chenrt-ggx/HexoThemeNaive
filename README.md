@@ -2,6 +2,7 @@
 
 ![license](https://img.shields.io/github/license/Chenrt-ggx/HexoThemeNaive)
 ![version](https://img.shields.io/github/package-json/v/Chenrt-ggx/HexoThemeNaive)
+![action](https://github.com/Chenrt-ggx/HexoThemeNaive/actions/workflows/release.yml/badge.svg)
 
 A Vue3 and Naive UI Based CSR Hexo Blog Theme without Gallery Post and Excerpts Support.
 
