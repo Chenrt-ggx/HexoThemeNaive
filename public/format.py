@@ -1,7 +1,7 @@
 import os
 
 
-def solve(name):
+def rename(name):
     os.chdir(name)
     for i in os.listdir():
         if i.startswith('app.') and i.endswith('.' + name):
@@ -18,6 +18,6 @@ def clean():
 
 
 if __name__ == '__main__':
-    solve('js')
-    solve('css')
+    rename('js')
+    rename('css')
     clean()
