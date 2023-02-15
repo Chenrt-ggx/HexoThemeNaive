@@ -1,5 +1,6 @@
 # Hexo Theme Naive
 
+![category](https://img.shields.io/badge/hexo-Theme-blueviolet)
 ![license](https://img.shields.io/github/license/Chenrt-ggx/HexoThemeNaive)
 ![version](https://img.shields.io/github/package-json/v/Chenrt-ggx/HexoThemeNaive)
 ![action](https://github.com/Chenrt-ggx/HexoThemeNaive/actions/workflows/release.yml/badge.svg)
